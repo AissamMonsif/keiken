@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./LocalExplorer-BACKEND
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:keiken
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+
+  frontend:
+    build:
+      context: ./LocalExplorer-FRONTEND
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge

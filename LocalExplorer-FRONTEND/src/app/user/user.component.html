@@ -1,0 +1,14 @@
+<div class="container text-center">
+  <h3 class="text-center"> Welcome </h3>
+
+  <form (ngSubmit) = "onSubmit()">
+      <div class="form-group " >
+          <input type="text" class ="form-control" id = "name"
+              [(ngModel)] = "user.name" name = "name" placeholder="Type your name">
+
+      </div>
+
+      <button class = "btn btn-success" type ="submit" >Send</button>
+
+  </form>
+  </div>

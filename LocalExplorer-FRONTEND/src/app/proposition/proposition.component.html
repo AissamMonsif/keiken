@@ -1,0 +1,15 @@
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Welcome, here are five activities to do today according to your location and weather conditions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let proposition of propositions" >
+            <td> {{ proposition }} </td>
+
+        </tr>
+    </tbody>
+</table>
+
